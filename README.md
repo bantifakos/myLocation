@@ -1,21 +1,43 @@
-# myLocation
+# MyLocation
 
-A .NET MAUI application written in C#.
-
-## Status
-
-Repository initialized. The MAUI project scaffold is being added.
+MyLocation is a .NET MAUI app written in C# that lets you fetch the device's current GPS coordinates and display them in two text boxes.
 
 ## Prerequisites
 
-- .NET SDK (8.0 or later)
-- MAUI workload: `dotnet workload install maui`
+- .NET 9 SDK
+- .NET MAUI workload: `dotnet workload install maui`
+- A supported target platform and emulator/device (Android, iOS, Mac Catalyst, or Windows)
 
-## Build & Run
+## Project Structure
+
+- `MyLocation.sln` - solution file at the repository root
+- `MyLocation/` - .NET MAUI application project
+
+## Build and Run
+
+From the repository root:
 
 ```bash
-dotnet restore
-dotnet build
-# Example: run on Android
-dotnet build -t:Run -f net9.0-android
+dotnet restore MyLocation.sln
+dotnet build MyLocation.sln
 ```
+
+Example platform run commands:
+
+```bash
+# Android
+dotnet build -t:Run -f net9.0-android MyLocation/MyLocation.csproj
+
+# Windows
+dotnet build -t:Run -f net9.0-windows10.0.19041.0 MyLocation/MyLocation.csproj
+```
+
+## Location Permissions
+
+The app requests location access when you tap **Get My Location**.
+
+- **Android**: `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`, and `ACCESS_NETWORK_STATE`
+- **iOS / Mac Catalyst**: `NSLocationWhenInUseUsageDescription`
+- **Windows**: `location` device capability
+
+Make sure location services are enabled on the device or emulator before testing.
