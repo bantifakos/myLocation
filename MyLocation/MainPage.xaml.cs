@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
         this.geolocation = geolocation;
     }
 
-    private async void OnGetLocationClicked(object sender, EventArgs e)
+    private async void OnGetLocationClicked(object? sender, EventArgs e)
     {
         if (IsBusy)
         {

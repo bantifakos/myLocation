@@ -1,11 +1,19 @@
+using Microsoft.Extensions.DependencyInjection;
+
 namespace MyLocation;
 
 public partial class App : Application
 {
-    public App(AppShell appShell)
+    private readonly IServiceProvider serviceProvider;
+
+    public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
+        this.serviceProvider = serviceProvider;
+    }
 
-        MainPage = appShell;
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(serviceProvider.GetRequiredService<AppShell>());
     }
 }
